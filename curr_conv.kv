@@ -1,0 +1,113 @@
+
+<TextInput>:
+    size_hint: 0.4, 0.1
+
+
+<MyFloatLayout>:
+    api: api
+
+    Label:
+        text: "API Key: "
+        pos_hint: {"left":1, "top":.85}
+        size_hint: 0.4, 0.1
+        text_size: self.size
+        halign: "right"
+        valign: "middle"
+
+
+    TextInput:
+        id: api
+        multiline: False
+        pos_hint: {"right":0.9, "top":.85}
+        hint_text: "Get API Key from ExchangeRate-API.com"
+        password: True
+        on_text: root.api_changed()
+
+
+    Label:
+        text: "Enter currency to convert from: "
+        pos_hint: {"left":1, "top":0.7}
+        size_hint: 0.4, 0.1
+        text_size: self.size
+        halign: "right"
+        valign: "middle"
+
+    Spinner:
+        id: currency_from
+        text: ""
+        size_hint: 0.4, 0.1
+        pos_hint: {"right":0.9, "top":0.7}
+        values: []
+
+        on_text: root.currency_from_clicked(currency_from.text)
+
+    Spinner:
+        id: currency_to
+        text: ""
+        size_hint: 0.4, 0.1
+        pos_hint: {"right":0.9, "top":0.55}
+        values: []
+
+        on_text: root.currency_to_clicked(currency_from.text)
+
+    Label:
+        text: "Enter currency to convert to: "
+        pos_hint: {"left":1, "top":0.55}
+        size_hint: 0.4, 0.1
+        text_size: self.size
+        halign: "right"
+        valign: "middle"
+
+
+
+    Label:
+        text: currency_from.text +" Amount: " if currency_from.text != "Select Currency" else " Amount: "
+        pos_hint: {"left":1, "top":.4}
+        size_hint: 0.4, 0.1
+        text_size: self.size
+        halign: "right"
+        valign: "middle"
+
+    TextInput:
+        id: text_amt
+        multiline: False
+        input_filter: "float"
+        pos_hint: {"right":0.9, "top":.4}
+        on_text: root.amt_changed()
+
+    Label:
+        id: label_rate
+        text: ""
+        pos_hint: {"left":1, "top":.25}
+        size_hint: 0.4, 0.1
+        text_size: self.size
+        halign: "right"
+        valign: "middle"
+
+    Label:
+        id: exchange_rate
+        text: ""
+        size_hint: 0.4, 0.1
+        text_size: self.size
+        pos_hint: {"right":0.9, "top":.25}
+        halign: "left"
+        valign: "middle"
+
+    Label:
+        text: ""
+        id: label_results
+        pos_hint: {"left":1, "top": 0.1}
+        size_hint: 0.4, 0.1
+        text_size: self.size
+        halign: "right"
+        valign: "middle"
+
+    Label:
+        id: exchange_results
+        text: ""
+        size_hint: 0.4, 0.1
+        text_size: self.size
+        pos_hint: {"right":0.9, "top":0.1}
+        halign: "left"
+        valign: "middle"
+
